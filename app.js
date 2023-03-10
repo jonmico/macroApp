@@ -4,17 +4,16 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-main().catch((err) => console.log(err));
+const connectAsync = async () => {
+  try {
+    await mongoose.connect("mongodb://127.0.0.1:27017/macApp");
+    console.log("connected");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/macs");
-}
-
-const db = mongoose.connection;
-
-db.once("open", () => {
-  console.log("connected");
-});
+connectAsync();
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
