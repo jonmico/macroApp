@@ -18,7 +18,6 @@ const connectAsync = async () => {
     console.log(error);
   }
 };
-
 connectAsync();
 
 app.get("/", (req, res) => {
@@ -26,13 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/createNewFood", async (req, res) => {
-  // const food = new Food({
-  //   brand: "Kroger",
-  //   name: "Spaghetti",
-  //   serving: 56,
-  // });
-  // await food.save();
-  // res.send(food);
+  res.render("foods/createFood");
 });
 
 app.listen(3000, () => {
