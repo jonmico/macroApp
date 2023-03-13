@@ -1,9 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const engine = require("ejs-mate");
 const app = express();
-const Food = require("./models/food");
+const path = require("path");
 
+app.engine("ejs", engine);
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+const Food = require("./models/food");
 
 const connectAsync = async () => {
   try {
