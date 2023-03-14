@@ -8,6 +8,8 @@ app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.urlencoded({ extended: true }));
+
 const Food = require("./models/food");
 
 const connectAsync = async () => {
@@ -26,6 +28,13 @@ app.get("/", (req, res) => {
 
 app.get("/createNewFood", async (req, res) => {
   res.render("foods/createFood");
+});
+
+app.post("/food", async (req, res) => {
+  const { food } = req.body;
+  const newFood = new Food(food);
+  await newFood.save();
+  res.send("success?");
 });
 
 app.listen(3000, () => {

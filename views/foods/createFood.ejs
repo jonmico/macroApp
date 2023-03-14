@@ -1,2 +1,37 @@
 <%layout("layouts/boilerplate")%>
-<h1>you did it</h1>
+<h1>Create New Food</h1>
+<form action="/food" method="POST" novalidate>
+  <div>
+    <label for="brand">Brand: </label>
+    <input type="text" id="brand" name="food[brand]" required />
+  </div>
+  <div>
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="food[name]" required />
+  </div>
+  <div>
+    <label for="serving">Serving Size: </label>
+    <input type="number" id="serving" name="food[serving]" required />
+  </div>
+  <div>
+    <label for="fat">Fat: </label>
+    <input type="Number" id="fat" name="food[macros][fat]" />
+  </div>
+  <div>
+    <label for="totalCarbs">Carbs: </label>
+    <input
+      type="Number"
+      id="totalCarbs"
+      name="food[macros][carbs][totalCarbs]"
+    />
+  </div>
+  <div>
+    <label for="protein">Protein : </label>
+    <input type="Number" id="protein" name="food[macros][protein]" />
+  </div>
+  <div>
+    <label for="fiber">Fiber: </label>
+    <input type="Number" id="fiber" name="food[macros][carbs][fiber]" />
+  </div>
+  <button>Create New Food</button>
+</form>
